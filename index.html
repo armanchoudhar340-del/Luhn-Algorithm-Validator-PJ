@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luhn Algorithm Validator</title>
+    <!-- External CSS file -->
+    <link rel="stylesheet" href="style.css">
+    <!-- Google Fonts for modern typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <header class="navbar">
+        <div class="logo">
+            <div class="logo-icon">🛡️</div>
+            Luhn Validator
+        </div>
+        <nav>
+            <a href="#">Documentation</a>
+            <a href="login.html" class="btn-signin">Sign In</a>
+        </nav>
+    </header>
+
+    <div class="wrapper">
+        <h1>Payment Style Validator</h1>
+        <p class="subtitle">
+            Simulate a secure checkout experience to test credit card validation.
+        </p>
+
+        <div class="card-box">
+            <div class="card-box-header">
+                <h3>💳 Pay with card</h3>
+                <div class="card-icons">
+                    <button class="card-btn active">VISA</button>
+                    <button class="card-btn">MASTER</button>
+                    <button class="card-btn">AMEX</button>
+                    <button class="card-btn">DISCOVER</button>
+                </div>
+            </div>
+
+            <div class="input-group">
+                <label>Card Number</label>
+                <div class="input-container">
+                    <input type="text" id="cardNumber" placeholder="3421 211221 21121">
+                    <span class="error-icon">⚠️</span>
+                </div>
+                <small class="error" id="cardError"></small>
+            </div>
+
+            <div class="row">
+                <div class="input-group">
+                    <label>Expiration Date (MM/YY)</label>
+                    <div class="input-container">
+                        <input type="text" id="expiry" placeholder="12 / 12">
+                        <span class="error-icon">⚠️</span>
+                    </div>
+                    <small class="error" id="expiryError"></small>
+                </div>
+
+                <div class="input-group">
+                    <label>CVV <span style="font-size: 0.7rem; color: #94a3b8; cursor: help;"
+                            title="The 3 or 4 digit security code on your card">❔</span></label>
+                    <div class="input-container">
+                        <input type="text" id="cvv" placeholder="....">
+                        <span class="error-icon">⚠️</span>
+                    </div>
+                    <small class="error" id="cvvError"></small>
+                </div>
+
+                <div class="input-group">
+                    <label>Postal Code</label>
+                    <div class="input-container">
+                        <input type="text" id="zip" placeholder="ZIP">
+                    </div>
+                    <small class="error"></small>
+                </div>
+            </div>
+
+            <button id="validateBtn">Validate Payment Details</button>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-links">
+            <a href="#">API Docs</a>
+            <a href="#">Privacy</a>
+            <a href="#">About Luhn Algorithm</a>
+        </div>
+    </footer>
+
+    <!-- Full Luxury Success Modal -->
+    <div id="successModal" class="modal">
+        <div class="modal-box">
+            <div class="checkmark"></div>
+            <h2>Payment Successful</h2>
+            <p>Your payment details were validated.</p>
+            <button onclick="closeModal()">Continue</button>
+        </div>
+    </div>
+
+    <!-- External JS file -->
+    <script src="script.js"></script>
+</body>
+
+</html>
