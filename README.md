@@ -1,106 +1,54 @@
-# 💳 Payment Style Luhn Validator
+💳 Smart Card Validator (Luhn Algorithm)
+Ek high-performance credit card validation system jo standard Luhn's Algorithm (Mod 10) ka istemal karke card numbers verify karta hai. Yeh project real-time UI updates aur robust backend validation ka ek perfect combo hai.
 
-A modern payment-style credit card validation system built using HTML, CSS, JavaScript, and Node.js (Express).
+🌟 Key Features
+Real-time IIN Detection: Automatically identifies card networks (Visa, MasterCard, Amex, Discover) based on prefix digits.
 
-This project simulates a secure checkout experience and validates card numbers using the **Luhn Algorithm** with automatic card type detection.
+Dynamic Formatting: Input field mein card numbers automatically format hote hain (spaced groups) jaise-jaise user type karta hai.
 
----
+Backend Verification: Sirf frontend hi nahi, Node.js API se bhi Luhn Checksum verify hota hai for extra security.
 
-## 🚀 Features
+Responsive Professional UI: Clean animations aur success/error modals jo real payment gateways jaisa feel dete hain.
 
-- Real-time card number formatting
-- Automatic card type detection (VISA, MASTER, AMEX, DISCOVER)
-- Luhn Algorithm validation
-- Backend API integration (Node.js + Express)
-- Animated success modal
-- Responsive professional UI
+🛠 Tech Stack
+Frontend: HTML5, CSS3 (Custom Properties), Vanilla JavaScript (ES6+)
 
----
+Backend: Node.js, Express.js
 
-## 🛠 Tech Stack
+Security: Luhn Algorithm Checksum implementation
 
-**Frontend**
-- HTML5
-- CSS3
-- JavaScript (Vanilla)
+🧮 How the Algorithm Works
+Luhn formula (Mod 10) card errors aur typos ko catch karne ka industry standard hai. Isme hum:
 
-**Backend**
-- Node.js
-- Express.js
-- CORS
+Har dusre digit ko (right side se) double karte hain.
 
----
+Agar doubling ke baad number >9 ho jaye, toh hum digits ka sum lete hain (e.g., 16→1+6=7).
 
-## 📂 Project Structure
+Sabhi digits ka final sum agar 10 se divisible hai, toh card Valid hai.
 
-payment-validator/
-│
-├── index.html
-├── style.css
-├── script.js
-│
-└── backend/
-    ├── server.js
-    ├── package.json
+🚀 Installation & Setup
+Repo Clone Karein:
 
----
-
-## ⚙️ Installation
-
-### 1️⃣ Clone Repository
-
-git clone https://github.com/your-username/payment-validator.git  
+Bash
+git clone https://github.com/your-username/payment-validator.git
 cd payment-validator
+Backend Setup:
 
----
-
-### 2️⃣ Install Backend Dependencies
-
-cd backend  
+Bash
+cd backend
 npm install
-
----
-
-### 3️⃣ Start Server
-
 node server.js
+Frontend Launch:
+Apne browser mein index.html open karein (Live Server extension use karna best hai).
 
-Server runs at:
+🧪 Demo Test Data
+Card Type	Number (Example)	Status
+Visa	4111 1111 1111 1111	✅ Valid
+MasterCard	5555 5555 5555 4444	✅ Valid
+Invalid	4111 1111 1111 1112	❌ Invalid
+🛡️ Disclaimer
+Yeh project sirf Educational Purposes ke liye hai. Koi bhi real payment data store nahi kiya jata aur na hi real transaction process hota hai.
 
-http://localhost:5000
-
----
-
-### 4️⃣ Open Frontend
-
-Open index.html using Live Server.
-
----
-
-## 🧪 Test Cards (Demo Only)
-
-VISA  
-4111 1111 1111 1111  
-
-MASTERCARD  
-5555 5555 5555 4444  
-
-AMEX  
-3782 822463 10005  
-
-DISCOVER  
-6011 1111 1111 1117  
-
----
-
-## 🔐 Disclaimer
-
-This project is for educational purposes only.  
-No real payments are processed or stored.
-
----
-
-## 👨‍💻 Author
-
-Arman Choudhary  
-B.Tech CSE
+👨‍💻 Author
+Arman Choudhary
+B.Tech in Computer Science & Engineering
