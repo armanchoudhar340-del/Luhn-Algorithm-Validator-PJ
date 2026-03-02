@@ -46,6 +46,24 @@ const validateExpiry = (value) => {
 
 const validateCVV = (value) => /^\d{3,4}$/.test(value);
 
+// API Integration
+async function validateCardWithAPI(cardNumber) {
+    try {
+        const response = await fetch("http://localhost:5000/validate-card", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({ cardNumber })
+        });
+        const data = await response.json();
+        return data;
+    } catch (error) {
+        console.error("API Error:", error);
+        return null;
+    }
+}
+
 // UI Logic
 document.addEventListener("DOMContentLoaded", () => {
     const cardInput = document.getElementById("cardNumber");
@@ -137,7 +155,15 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         if (isValid) {
-            showModal();
+            // Call API for final confirmation
+            validateCardWithAPI(cardInput.value).then(result => {
+                if (result && result.valid) {
+                    showModal();
+                } else {
+                    cardInput.parentElement.parentElement.querySelector(".error").textContent = "Invalid card (Backend failed).";
+                    cardInput.classList.add("error-border");
+                }
+            });
         }
     });
 });
