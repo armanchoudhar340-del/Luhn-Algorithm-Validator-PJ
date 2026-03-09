@@ -8,6 +8,12 @@
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
+    <!-- Login Check -->
+    <script>
+        if (localStorage.getItem("loggedIn")) {
+            window.location.href = "index.html";
+        }
+    </script>
     <style>
         .login-box {
             background: var(--card-bg);
@@ -166,7 +172,7 @@
                 <div class="input-group">
                     <label>Email Address</label>
                     <div class="input-container">
-                        <input type="email" id="email" placeholder="name@example.com" required>
+                        <input type="email" id="username" placeholder="admin@gmail.com" required>
                     </div>
                 </div>
 
@@ -185,18 +191,22 @@
     </div>
 
     <script>
-        document.getElementById("loginForm").addEventListener("submit", function (e) {
-            e.preventDefault(); // page reload stop
-
-            const email = document.getElementById("email").value;
+        function login() {
+            const username = document.getElementById("username").value;
             const password = document.getElementById("password").value;
 
-            if (email && password) {
-                alert("Login Successful ✅");
-                window.location.href = "index.html"; // redirect page
+            if (username !== "" && password !== "") {
+                localStorage.setItem("loggedIn", "true");
+                localStorage.setItem("user", username);
+                window.location.href = "index.html";
             } else {
-                alert("Please fill all fields ❌");
+                alert("Please enter username and password");
             }
+        }
+
+        document.getElementById("loginForm").addEventListener("submit", function (e) {
+            e.preventDefault();
+            login();
         });
     </script>
 

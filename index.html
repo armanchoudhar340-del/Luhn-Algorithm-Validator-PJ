@@ -4,6 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Login Check -->
+    <script>
+        if (!localStorage.getItem("loggedIn")) {
+            window.location.href = "login.html";
+        }
+    </script>
     <title>Luhn Algorithm Validator</title>
     <!-- External CSS file -->
     <link rel="stylesheet" href="style.css">
@@ -18,10 +24,19 @@
             Luhn Validator
         </div>
         <nav>
+            <span id="userName" style="font-weight: 500; font-size: 0.95rem; color: var(--text-main);"></span>
             <a href="#">Documentation</a>
-            <a href="login.html" class="btn-signin">Sign In</a>
+            <button onclick="logout()" class="btn-logout">Logout</button>
         </nav>
     </header>
+
+    <script>
+        // Set username in navbar
+        const storedUser = localStorage.getItem("user");
+        if (storedUser) {
+            document.getElementById("userName").innerText = `Welcome, ${storedUser}`;
+        }
+    </script>
 
     <div class="wrapper">
         <h1>Payment Style Validator</h1>
@@ -102,6 +117,13 @@
 
     <!-- External JS file -->
     <script src="script.js"></script>
+    <script>
+        function logout() {
+            localStorage.removeItem("loggedIn");
+            localStorage.removeItem("user");
+            window.location.href = "login.html";
+        }
+    </script>
 </body>
 
 </html>
